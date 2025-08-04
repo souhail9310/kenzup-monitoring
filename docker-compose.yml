@@ -5,8 +5,8 @@ services:
     container_name: kenzupMonitoring
     user: "0:0"
     privileged: true
-    env_file:
-      - ./dockerconfig/.env.odoo17
+    # env_file:
+    #   - ./dockerconfig/.env.odoo17
     tty: true
     volumes:
       - odoo17enterprise-kenzupMonitoring:/var/lib/odoo
