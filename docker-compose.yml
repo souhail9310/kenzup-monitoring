@@ -1,0 +1,26 @@
+version: '3.1'
+services:
+  kenzupMonitoring:
+    image: akwaregistry.azurecr.io/odooenterprise:17
+    container_name: kenzupMonitoring
+    user: "0:0"
+    privileged: true
+    env_file:
+      - ./dockerconfig/.env.odoo17
+    tty: true
+    volumes:
+      - odoo17enterprise-kenzupMonitoring:/var/lib/odoo
+      - /data/compose/16/:/mnt
+    ports:
+      - "58086:8069"
+      - "58085:8072"
+    restart: always
+    command:
+      [
+        "bash",
+        "-c",
+        "odoo -c /mnt/dockerconfig/odoo17.conf -u akwa_contact"
+      ]
+volumes:
+  odoo17enterprise-kenzupMonitoring:
+
